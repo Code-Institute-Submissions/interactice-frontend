@@ -1,0 +1,50 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align:center;
+    color: grey;
+}
+
+#dashboard{
+    display: block;
+    width: 100%;
+}
+
+#dashboard svg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main{
+    display: block;
+    width: 100%;
+}
+
+#main svg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.dc-chart .brush rect.extent {
+    fill: #bada55;
+    fill-opacity: .450;
+}
+
+.line {
+    stroke: black;
+    fill: black;
+    opacity: 1;
+}
+
+.axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+    
+    .x.axis path {
+      display: none;
+    }
