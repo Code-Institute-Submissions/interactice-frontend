@@ -39,12 +39,12 @@ footer {
 }
 
 .axis path,
-    .axis line {
+.axis line {
       fill: none;
       stroke: #000;
       shape-rendering: crispEdges;
     }
     
-    .x.axis path {
+.x.axis path {
       display: none;
     }
