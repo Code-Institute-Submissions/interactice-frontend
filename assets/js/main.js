@@ -1,4 +1,6 @@
 // https://bl.ocks.org/larsenmtl/e3b8b7c2ca4787f77d78f58d41c3da91
+// year, iso, country_name, disaster_type, occurrence, total_deaths, 
+// injured, affected, homeless, total_affected, total_damage
 
 
 queue ()
@@ -24,6 +26,7 @@ function methods(error, data) {
   //Graphs 
   showDeathsPerDecade(ndx);
   showDisastersPerDecade(ndx);
+
   
   dc.renderAll();
 }
@@ -43,89 +46,96 @@ function methods(error, data) {
       var myScale = d3.scale.linear()
           .domain([minDecade, maxDecade])
           .range([0, 100])
+
       
       var chart = dc.lineChart("#dashboard")
-          .width(1000)
-          .height(300)
+      
+      chart
+          .width(600)
+          .height(400)
+          .brushOn(false)
           .margins({top: 10, right: 50, bottom: 30, left: 50})
           .dimension(decade_dim)
           .group(total_deaths_per_decade)
           .transitionDuration(500)
           .x(myScale)
           .xAxisLabel("Decade")
-          .yAxis().ticks(4);
+          .yAxisLabel("Total Deaths")
+          .title(function(d) { return  `${d.value} Total Deaths in ${d.key}` })
+          .yAxis().ticks(4)
+          
       }
     function showDisastersPerDecade(ndx){
       
     // Pluck Data By Decade
     var decadeDim = ndx.dimension(dc.pluck("decade"));
-
+    var yearDim = ndx.dimension(dc.pluck("year"));
     
     // Create Stacked Group For Each Disaster Type
-    var DisasterTypeByFlood = decadeDim.group().reduceSum(function(d) {
+    var DisasterTypeByFlood = yearDim.group().reduceSum(function(d) {
       if (d.disaster_type === "Flood") {
         return +d.occurrence;
       } else {
         return 0;
       }
     });
-    var DisasterTypeByDrought = decadeDim.group().reduceSum(function(d) {
+    var DisasterTypeByDrought = yearDim.group().reduceSum(function(d) {
       if (d.disaster_type === "Drought") {
         return +d.occurrence;
       } else {
         return 0;
       }
     });
-    var DisasterTypeByEpidemic = decadeDim.group().reduceSum(function(d) {
+    var DisasterTypeByEpidemic = yearDim.group().reduceSum(function(d) {
       if (d.disaster_type === "Epidemic") {
         return +d.occurrence;
       } else {
         return 0;
       }
     });
-    var DisasterTypeByVolcanic = decadeDim.group().reduceSum(function(d) {
+    var DisasterTypeByVolcanic = yearDim.group().reduceSum(function(d) {
       if (d.disaster_type === "Volcanic activity") {
         return +d.occurrence;
       } else {
         return 0;
       }
     });
-    var DisasterTypeByStorm = decadeDim.group().reduceSum(function(d) {
+    var DisasterTypeByStorm = yearDim.group().reduceSum(function(d) {
       if (d.disaster_type === "Storm") {
         return +d.occurrence;
       } else {
         return 0;
       }
     });
-    var DisasterTypeByEarthquake = decadeDim.group().reduceSum(function(d) {
+    var DisasterTypeByEarthquake = yearDim.group().reduceSum(function(d) {
       if (d.disaster_type === "Earthquake") {
         return +d.occurrence;
       } else {
         return 0;
       }
     });
-    var DisasterTypeByMassMoveDry = decadeDim.group().reduceSum(function(d) {
+    var DisasterTypeByMassMoveDry = yearDim.group().reduceSum(function(d) {
       if (d.disaster_type === "Mass movement (dry)") {
         return +d.occurrence;
       } else {
         return 0;
       }
     });
-    var DisasterTypeByExtremeTemp = decadeDim.group().reduceSum(function(d) {
+    var DisasterTypeByExtremeTemp = yearDim.group().reduceSum(function(d) {
       if (d.disaster_type === "Extreme temperature") {
         return +d.occurrence;
       } else {
         return 0;
       }
     });
-    var DisasterTypeByWildfire = decadeDim.group().reduceSum(function(d) {
+    var DisasterTypeByWildfire = yearDim.group().reduceSum(function(d) {
       if (d.disaster_type === "Wildfire") {
         return +d.occurrence;
       } else {
         return 0;
       }
     });
-    var DisasterTypeByImpact = decadeDim.group().reduceSum(function(d) {
+    var DisasterTypeByImpact = yearDim.group().reduceSum(function(d) {
       if (d.disaster_type === "Impact") {
         return +d.occurrence;
       } else {
@@ -145,44 +155,52 @@ function methods(error, data) {
     var stackedChart = dc.barChart("#main")
     
     // baseMixin
-    // General Chart Options + Margins
+    // General Chart Options + marginMixin
     stackedChart
-      .width(1000)
-      .height(500)
-      .margins({top: 10, right: 50, bottom: 30, left: 50})
-    
+      .width(600)
+      .height(400)
+      .margins({top: 10, right: 50, bottom: 30, left: 50});
+
     // Data Options 
     stackedChart
       .dimension(decadeDim)
       .group(DisasterTypeByDrought, "Drought")
       .stack(DisasterTypeByEarthquake, "Earthquake")
       .stack(DisasterTypeByEpidemic, "Epidemic")
-      .stack(DisasterTypeByExtremeTemp, "Extreme Temerature")
       .stack(DisasterTypeByFlood, "Flood")
       .stack(DisasterTypeByImpact, "Impact")
-      .stack(DisasterTypeByMassMoveDry, "Mass Movement(dry)")
       .stack(DisasterTypeByStorm, "Storm")
       .stack(DisasterTypeByVolcanic, "Volcanic Activity")
-      .stack(DisasterTypeByWildfire, "Wildfire")
+      .stack(DisasterTypeByWildfire, "Wildfire");
+      
+    // colorMixin
+    stackedChart
+      .colors(d3.scale.category20b());
     
     // coordinateGridMixin
     stackedChart
       .brushOn(false)
       .elasticX(false)
       .x(myScale)
-      .xAxisLabel("Decade")
+      .xAxisLabel("Year")
       .yAxisLabel("Occurrences")
       .legend(
         dc.legend()
-          .x(100)
-          .y(10)
+          .x(65)
+          .y(30)
           .itemHeight(15)
           .gap(5))
       .centerBar(true)
-      .title(function(d) { return "Occurred: " + d.value + " times" })
+      .title(function(d) { return  `${d.value} ${this.layer}'s occurred in  ${d.key}` })
       .mouseZoomable(true)
-      .xUnits(function(){return 13;});
+      .renderHorizontalGridLines(true)
+      .on('renderlet', function(chart) {
+                  chart.selectAll('rect').on('click', function(d) {
+                     console.log(d);
+                  });
+               });
     }
+  
     
     
     // Dead Graphs 
