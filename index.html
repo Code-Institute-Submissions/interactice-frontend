@@ -36,19 +36,70 @@
         </header> 
         <!-- HEADER END -->
         
-        <!-- FIRST ROW OF GRAPHS START -->
+        <!-- MENU START -->
+        <div class="menu">
+            
+            <!-- RESET DATA BUTTON START -->
+            <button id="reset-btn">
+            <a href="javascript:dc.filterAll(); dc.renderAll();" id="reset-a">Reset All</a>
+            </button>
+            <!-- RESET DATA BUTTON END -->
+            <!-- DISASTER TYPE SELECT START -->
+            <div id="disciplineSelector"></div>
+            <!-- DISASTER TYPE SELECT END -->
+            
+            <div class="close-btn">
+                <button id="close-btn"> close </button>
+            </div>
+        </div>
+        <!-- MENU END -->
+        <!-- FIRST GRAPH START -->
         <div class="container">
             <div class="row">
-                <div class="col-12 col-xl-6 overflow-auto">
-                    <div id="dashboard"></div>
+                <div class="col-md-12 col-lg-8 overflow-auto">
+                    <div id="stackedchart"></div>
                 </div>
-                <div class="col-12 col-xl-6 overflow-auto">
-                    <div id="main"></div>
+                <div class="col-md-12 col-lg-4">
+                    <div class="graph-para"> 
+                        <h2> Occurences of Natural Disasters Since 1900 - 2019</h2>
+                        <hr width=65%>
+                        
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- FIRST ROW OF GRAPHS END -->
-    
+        <!-- FIRST GRAPH END -->
+        
+        <!-- SECOND GRAPH START -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-8 overflow-auto">
+                    <div id="linegraph"></div>
+                </div>
+                <div class="col-md-12 col-lg-4">
+                    <div class="graph-para"> 
+                        <h2> Total Deaths Caused By Natural Disasters Since 1900 - 2019</h2>
+                        <hr width=65%>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- SECOND GRAPH END -->
+        
+        <!-- THIRD GRAPH START -->
+        <div class="container">
+            <div class="row">
+                <div class="col-6 overflow-auto">
+                    <div id="piechart"></div>
+                </div>
+                <div class="col-6">
+                    <div class="graph-para"></div>
+                </div>
+            </div>
+        </div>
+        <!-- THIRD GRAPH END -->
+        
         <!-- FOOTER START -->
         <footer>
             <p> Built By: Ewan Lockwood | Source: EM-DAT: The Emergency Events Database - Universite catholique de Louvain (UCL) - CRED, D. Guha-Sapir - www.emdat.be, Brussels, Belgium</p>
@@ -56,7 +107,7 @@
         <!-- FOOTER END -->
         
         <!-- SCRIPTS START -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
          <!-- SCRIPTS END -->

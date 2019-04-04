@@ -3,19 +3,97 @@
 body {
     background-color: #eee;
     font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
 }
+
+/* ----- Header Start ----- */
 
 .heading {
     text-align: center;
     line-height: 10px;
 }
 
-#main svg,
-#dashboard svg {
+.heading h2 {
+    font-weight: 700;
+}
+
+/* ----- Header End ----- */
+
+.menu {
+    background-color: #d4d4d4;
+    width: 300px;
+    height: 200px;
+    position: fixed;
+    top: -5px;
+    left: 5px;
+    padding: 5px;
+    z-index: 10;
+    box-shadow: 0 0 4px #d4d4d4;
+    border: 3px solid #ffffff;
+}
+
+/* ----- Reset Button Start ----- */
+
+#reset-btn {
+    background-color: #d4d4d4;
+    border: 2px solid #fff;
+    /*box-shadow: 0px 0px 3px #000;*/
+    margin-bottom: 4px;
+    z-index: 10;
+}
+#reset-btn:hover{
+    background-color: #eeeeee;
+}
+
+button:focus {
+    outline: 1px solid gold;
+}
+#reset-a {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+}
+
+/* ----- Reset Button Start ----- */
+
+
+#disciplineSelector {
+ 
+}
+
+/* ----- Charts Start ----- */
+
+#stackedchart {
+    display: block;
+    margin-left: auto;
+    height: 100%;
+    width: 100%;
+    z-index: -10;
+}
+
+#stackedchart svg,
+#linegraph svg {
     background-color: white;
     margin: 10px 10px;
     padding: 5px 5px;
 }
+
+/* ----- Charts End ----- */
+
+/* ----- Chart Description Start ----- */
+
+.graph-para {
+    background-color: white;
+    margin: 10px 10px;
+    padding: 5px 5px;
+}
+
+.graph-para h2 {
+    text-align: center;
+}
+
+/* ----- Chart Description End ----- */
 
 /* ----- Main Styles End ----- */
 
