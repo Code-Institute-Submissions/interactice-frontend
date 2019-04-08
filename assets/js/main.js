@@ -1,7 +1,3 @@
-
-
-
-
 // year, iso, country_name, disaster_type, occurrence, total_deaths, 
 // injured, affected, homeless, total_affected, total_damage
 
@@ -228,9 +224,7 @@ queue ()
     
     // Pluck data by country_name
     var country_nameDim = ndx.dimension(dc.pluck("country_name"));
-    var total_damageDim = country_nameDim.group().reduceSum(dc.pluck("total_damage"))
-    
-    var floo
+    var total_damageDim = country_nameDim.group().reduceSum(dc.pluck("total_damage"));
     
     var pieChart = dc.pieChart("#piechart")
     
@@ -260,11 +254,41 @@ queue ()
   function jqueryFunctions(ndx, data) {
     $(document).ready(function() {
       
+      // Menu Functions
+    
       $("#close-btn").click(function(){
         $("#reset-btn").animate({opacity: "0"}, 250).css("display", "none");
         $("#disciplineSelector").animate({opacity: "0"}, 250).css("display", "none");
-        $(".menu").animate({height: '50px'}, 500);
+        $(".menu").animate({height: '47.5px'}, 500);
+        $(".toggle-btn").addClass("row_one", 500);
+        $("#close-btn").css("display", "none");
+        $("#open-btn").css("display", "block");
+      });  
+      $("#open-btn").click(function(){
+        $("#reset-btn").animate({opacity: "100"}, 250).css("display", "block");
+        $("#disciplineSelector").animate({opacity: "100"}, 250).css("display", "block");
+        $(".menu").animate({height: '200px'}, 500);
+        $(".toggle-btn").removeClass("row_one", 500);
+        $("#close-btn").css("display", "block");
+        $("#open-btn").css("display", "none");
       }); 
+      
+      // Scroll Functions
+      
+      $(window).scroll({ previousTop: 0 }, function() {
+        var currentTop = $(window).scrollTop();
+        if (currentTop < this.previousTop) {
+          $("footer").css("background-color", "rgba(20,20,20, 0)").css("color", "black").css("border-top", "none").css("box-shadow", "none");
+          $(".menu").css("opacity", "1");
+        } else {
+          $("footer").css("background-color", "#919AA1");
+          $(".menu").css("opacity", "0.7");
+    }
+    this.previousTop = currentTop;
+
+      })
+      
+      
       
     })
   }
