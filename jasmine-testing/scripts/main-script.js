@@ -1,8 +1,4 @@
-// year, iso, country_name, disaster_type, occurrence, total_deaths, 
-// injured, affected, homeless, total_affected, total_damage
-
-
-queue ()
+queue()
   .defer(d3.json, "data/data.json")
   .await(methods);
 
