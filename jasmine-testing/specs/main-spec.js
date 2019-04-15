@@ -1,45 +1,41 @@
-describe("queue method"), function() {
+describe("methods function", function() {
     
-    it('calls methods() function', function() {
+    it('should call the jqueryFunctions() function', function() {
+        spyOn(window, "jqueryFunctions");
         
-        
-        spyOn(window, "methods");
-        
-        queue();
-        
-        expect(window.methods).toHaveBeenCalled();  
-        
+        methods();
+        expect(window.jqueryFunctions).toHaveBeenCalled(); 
         
     })
-}
+})
 
 
 
 
-describe('methods function', function() {
+// describe('methods function', function() {
 
     
 
-    it('calls show_discipline_selector function', function() {
+//     it('calls show_discipline_selector function', function() {
 
-        // arrange
+//         // arrange
 
-        spyOn(window, 'show_discipline_selector');
-
-        
-
-        // act
-
-        methods();
+//         spyOn(window, 'show_discipline_selector');
 
         
 
-        // assert
+//         // act
 
-        expect(window.show_discipline_selector).toHaveBeenCalled();  
+//         methods();
 
-    });
+        
+
+//         // assert
+
+//         expect(window.show_discipline_selector).toHaveBeenCalled();  
+
+//     });
 
  
 
-});
+// });

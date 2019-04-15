@@ -1,54 +1,80 @@
-// year, iso, country_name, disaster_type, occurrence, total_deaths, 
-// injured, affected, homeless, total_affected, total_damage
-
-
 queue ()
   .defer(d3.json, "data/data.json")
   .await(methods);
 
   function methods(error, data) {
-  var ndx = crossfilter(data);
+    var ndx = crossfilter(data);
+      
+    // Create a new key / value in the data called "decade"
+    data.forEach(function(x) {
+      let decadeA = Math.floor(x.year/10)*10;
+      var decade = decadeA//.toString() + "'s"
+      x.decade = decade;
+    });
     
-  // Create a new key / value in the data called "decade"
-  data.forEach(function(x) {
-    let decadeA = Math.floor(x.year/10)*10;
-    var decade = decadeA//.toString() + "'s"
-    x.decade = decade;
-  });
-  
-  // floor deaths by 100 so total deaths = Total Deaths ('000)
-  data.forEach(function(x) {
-      x.total_deaths = Math.floor(x.total_deaths / 1000)
-  });
-  
-  // floor total_damage by 100 so total_damage = Total Damage ('000)
-  data.forEach(function(x) {
-      x.total_damage = Math.floor(x.total_damage / 1000)
-  });
-  
- // How many country_name in the data
- 
-// console.log(data[0].country_name)
-
-// data.forEach(function(d) {
-//   console.log(d.country_name);
-// })
-
-  // Jquery Functions
-  jqueryFunctions(ndx, data);
-  
-  //Graphs 
-  showDisastersPerDecade(ndx);
-  showDeathsPerDecade(ndx);
-  showTotalDamagePerCountry(ndx);
-  show_discipline_selector(ndx);
-  showTotalDamagePerCountryTop(ndx);
-  // showTotalDamagePerCountryBottom(ndx);
-  // showTotalAffectedByType(ndx);
-  
-  // Render Graphs
-  dc.renderAll();
+    // floor deaths by 100 so total deaths = Total Deaths ('000)
+    data.forEach(function(x) {
+        x.total_deaths = Math.floor(x.total_deaths / 1000)
+    });
+    
+    // floor total_damage by 100 so total_damage = Total Damage ('000)
+    data.forEach(function(x) {
+        x.total_damage = Math.floor(x.total_damage / 1000)
+    });
+    
+    // Jquery Functions
+    jqueryFunctions(ndx, data);
+    
+    //Graphs 
+    showDisastersPerDecade(ndx);
+    showDeathsPerDecade(ndx);
+    showTotalDamagePerCountry(ndx);
+    show_discipline_selector(ndx);
+    showTotalDamagePerCountryTop(ndx, data);
+    showTotalDamagePerCountryBottom(ndx, data);
+    
+    // Render Graphs
+    dc.renderAll();
 }
+
+  // JQuery Functions
+  function jqueryFunctions(ndx, data) {
+    $(document).ready(function() {
+      $('#ModalCenter').modal('show');
+      
+      // Menu Functions
+      $("#close-btn").click(function(){
+        $("#reset-btn").animate({opacity: "0"}, 250).css("display", "none");
+        $("#disciplineSelector").animate({opacity: "0"}, 250).css("display", "none");
+        $(".menu").animate({height: '41px'}, 500);
+        $(".toggle-btn").addClass("row_one", 500);
+        $("#close-btn").css("display", "none");
+        $("#open-btn").css("display", "block");
+      });  
+      $("#open-btn").click(function(){
+        $("#reset-btn").animate({opacity: "100"}, 250).css("display", "block");
+        $("#disciplineSelector").animate({opacity: "100"}, 250).css("display", "block");
+        $(".menu").animate({height: '200px'}, 500);
+        $(".toggle-btn").removeClass("row_one", 500);
+        $("#close-btn").css("display", "block");
+        $("#open-btn").css("display", "none");
+      }); 
+      
+      // Scroll Functions
+      $(window).scroll({ previousTop: 0 }, function() {
+        var currentTop = $(window).scrollTop();
+        if (currentTop < this.previousTop) {
+          $("footer").css("background-color", "rgba(20,20,20, 0)").css("color", "black").css("border-top", "none").css("box-shadow", "none");
+          $(".menu").css("opacity", "1");
+        } else {
+          $("footer").css("background-color", "#ffffff");
+          $(".menu").css("opacity", "0.7");
+    }
+    this.previousTop = currentTop;
+
+      })
+    })
+  }
 
   // Create a Selector in the Menu to change graphs according to disaster_type.
   function show_discipline_selector(ndx) {
@@ -199,38 +225,49 @@ queue ()
     
   // Create a Line Graph of total_deaths by disaster_type by decade.
   function showDeathsPerDecade(ndx) {
-      var decade_dim = ndx.dimension(dc.pluck('decade'));
-      var total_deaths_per_decade = decade_dim.group().reduceSum(dc.pluck('total_deaths'));
-  
-      var minDecade = decade_dim.bottom(1)[0].decade;
-      var maxDecade = decade_dim.top(1)[0].decade;
-      
-      var total_deaths_dim = ndx.dimension(dc.pluck('total_deaths'));
-      var minTotalDeaths = total_deaths_dim.bottom(1)[0].total_deaths;
-      var maxTotalDeaths = total_deaths_dim.top(1)[0].total_deaths;
-      
-      var myScale = d3.scale.linear()
-          .domain([minDecade, maxDecade])
-          .range([0, 100])
+    
+    // Pluck data by decade and group total_deaths.
+    var decade_dim = ndx.dimension(dc.pluck('decade'));
+    var total_deaths_per_decade = decade_dim.group().reduceSum(dc.pluck('total_deaths'));
 
-      
-      var chart = dc.lineChart("#linegraph")
-      
-      chart
-          .width(600)
-          .height(400)
-          .brushOn(false)
-          .margins({top: 10, right: 50, bottom: 30, left: 50})
-          .dimension(decade_dim)
-          .group(total_deaths_per_decade)
-          .transitionDuration(500)
-          .x(myScale)
-          .xAxisLabel("Decade")
-          .yAxisLabel("Total Deaths ('000)")
-          .title(function(d) { return  `${d.value} Total Deaths in ${d.key}` })
-          .yAxis().ticks(4)
-          
-      }
+    // Create total_deaths_dimension
+    var total_deaths_dim = ndx.dimension(dc.pluck('total_deaths'));
+    
+    // Create Scale (1900 - 2010)
+    var minDecade = decade_dim.bottom(1)[0].decade;
+    var maxDecade = decade_dim.top(1)[0].decade;
+    var myScale = d3.scale.linear()
+        .domain([minDecade, maxDecade])
+        .range([0, 100])
+
+    // Linegraph Variable 
+    var chart = dc.lineChart("#linegraph")
+    
+    // baseMixin
+    // General Chart Options + marginMixin
+    chart
+        .width(600)
+        .height(400)
+        .margins({top: 10, right: 50, bottom: 30, left: 50})
+        .title( d =>  `${d.value} Total Deaths in ${d.key}`);
+    
+    // Data Options
+    chart
+        .dimension(decade_dim)
+        .group(total_deaths_per_decade);
+    
+    // Transition Option
+    chart
+        .transitionDuration(500);
+    
+    // coordinateGridMixin
+    chart
+        .brushOn(false)    
+        .x(myScale)
+        .xAxisLabel("Decade")
+        .yAxisLabel("Total Deaths ('000)")
+        .yAxis().ticks(4);
+    }
       
   // Create a Pie Chart that shows total_damage ('000 ) per County.
   function showTotalDamagePerCountry(ndx) {
@@ -239,8 +276,10 @@ queue ()
     var country_nameDim = ndx.dimension(dc.pluck("country_name"));
     var total_damageDim = country_nameDim.group().reduceSum(dc.pluck("total_damage"));
     
+    // Pie Chart Variable
     var pieChart = dc.pieChart("#piechart")
     
+    // baseMixin
     pieChart
       .height(500)
       .radius(150)
@@ -249,107 +288,99 @@ queue ()
       .group(total_damageDim)
       .title(function(d) {
         return `Total Damage('000) in ${d.key}: ${d.value} USD`
-      })
+      });
+    
+    // colorMixin
+    pieChart
       .colors(d3.scale.category20b());
   
   }
   
-  // Create Two Pie Charts that show top20 and bottom20 of total_damange ('000 USD) per Country.
-  function showTotalDamagePerCountryTop(ndx) {
+  // Create a Pie Chart that shows top 10 total_damage ('000 ) per County.
+  function showTotalDamagePerCountryTop(ndx, data) {
+    
+    // Filter data and only rturn data piece whose total_damage > 24000
+    var filter = data.filter(function(item) {
+      return item.total_damage;
+    });
+    
+    // Sort the filter array
+    var sort = filter.sort(function(a, b) {
+      return b.total_damage - a.total_damage;
+    });
+    
+    
+    // Create new crossfilter 
+    var ndx_top_total_damage = crossfilter(filter);
     
     // Pluck data by country_name
-    var country_nameDimension = ndx.dimension(dc.pluck("country_name"));
-    var total_damageDimension = country_nameDimension.group().reduceSum(dc.pluck("total_damage"));
-    
-    var newArray = []
-    
-    var newArraySeq = function() {
-      for(var i = 0 ; i < 20; i++)
-      //newArray.push(total_damageDimension.top(20)[2]);
-      newArray.push(total_damageDimension.top(20)[i]);
-    }
-    
-    newArraySeq();
-    console.log(newArray);
-    
-    total_damageDimension.top(1)[0]
+    var country_name_dimension = ndx_top_total_damage.dimension(dc.pluck("country_name"));
+    var total_damage_dimension = country_name_dimension.group().reduceSum(dc.pluck("total_damage"));
     
     var pieChart = dc.pieChart("#piechart-1")
     
-    pieChart
-      .height(500)
-      .radius(150)
+     pieChart
+      .height(300)
+      .radius(100)
       .transitionDuration(1500)
-      .dimension(country_nameDimension)
-      .group(newArray.key)
+      .dimension(country_name_dimension)
+      .group(total_damage_dimension)
       .title(function(d) {
         return `Total Damage('000) in ${d.key}: ${d.value} USD`
       })
-      .colors(d3.scale.category20b());
+      .colors(d3.scale.category20b())
+      .cap(5)
+      .minAngleForLabel(360)
+      .legend(
+        dc.legend()
+          .x(5)
+          .y(5)
+          .itemHeight(15)
+          .gap(5));
   
-  }
-  // function showTotalDamagePerCountryBottom(ndx) {
-    
-  //   // Pluck data by country_name
-  //   var country_nameDim = ndx.dimension(dc.pluck("country_name"));
-  //   var total_damageDim = country_nameDim.group().reduceSum(dc.pluck("total_damage"));
-    
-  //   var pieChart = dc.pieChart("#piechart-2")
-    
-  //   pieChart
-  //     .height(500)
-  //     .radius(150)
-  //     .transitionDuration(1500)
-  //     .dimension(country_nameDim)
-  //     .group(total_damageDim)
-  //     .title(function(d) {
-  //       return `Total Damage('000) in ${d.key}: ${d.value} USD`
-  //     })
-  //     .colors(d3.scale.category20b());
-  
-  // }
-  
+}
 
-
-  // JQuery Functions
-  function jqueryFunctions(ndx, data) {
-    $(document).ready(function() {
-      
-      // Menu Functions
+  // Create a Pie Chart that shows bottom 10 total_damage ('000 ) per County.
+  function showTotalDamagePerCountryBottom(ndx, data) {
     
-      $("#close-btn").click(function(){
-        $("#reset-btn").animate({opacity: "0"}, 250).css("display", "none");
-        $("#disciplineSelector").animate({opacity: "0"}, 250).css("display", "none");
-        $(".menu").animate({height: '47.5px'}, 500);
-        $(".toggle-btn").addClass("row_one", 500);
-        $("#close-btn").css("display", "none");
-        $("#open-btn").css("display", "block");
-      });  
-      $("#open-btn").click(function(){
-        $("#reset-btn").animate({opacity: "100"}, 250).css("display", "block");
-        $("#disciplineSelector").animate({opacity: "100"}, 250).css("display", "block");
-        $(".menu").animate({height: '200px'}, 500);
-        $(".toggle-btn").removeClass("row_one", 500);
-        $("#close-btn").css("display", "block");
-        $("#open-btn").css("display", "none");
-      }); 
-      
-      // Scroll Functions
-      
-      $(window).scroll({ previousTop: 0 }, function() {
-        var currentTop = $(window).scrollTop();
-        if (currentTop < this.previousTop) {
-          $("footer").css("background-color", "rgba(20,20,20, 0)").css("color", "black").css("border-top", "none").css("box-shadow", "none");
-          $(".menu").css("opacity", "1");
-        } else {
-          $("footer").css("background-color", "#d4d4d4");
-          $(".menu").css("opacity", "0.7");
-    }
-    this.previousTop = currentTop;
-
+    // Filter data and only rturn data piece whose total_damage > 24000
+    var filter = data.filter(function(item) {
+      return item.total_damage;
+    });
+    
+    // Sort the filter array
+    var sort = filter.sort(function(a, b) {
+      return b.total_damage + a.total_damage;
+    });
+    
+    
+    // Create new crossfilter 
+    var ndx_bottom_total_damage = crossfilter(sort);
+    
+    // Pluck data by country_name
+    var country_name_dimension = ndx_bottom_total_damage.dimension(dc.pluck("country_name"));
+    var total_damage_dimension = country_name_dimension.group().reduceSum(dc.pluck("total_damage"));
+    
+    var pieChart = dc.pieChart("#piechart-2")
+    
+    pieChart
+      .height(300)
+      .radius(100)
+      .transitionDuration(1500)
+      .dimension(country_name_dimension)
+      .group(total_damage_dimension)
+      .title(function(d) {
+        return `Total Damage('000) in ${d.key}: ${d.value} USD`
       })
-      
-      
-      
-    })
-  }
+      .colors(d3.scale.category20b())
+      .cap(5)
+      .minAngleForLabel(360)
+      .legend(
+        dc.legend()
+          .x(5)
+          .y(5)
+          .itemHeight(15)
+          .gap(5));
+}
+
+

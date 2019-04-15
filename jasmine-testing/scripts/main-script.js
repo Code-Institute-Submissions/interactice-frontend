@@ -38,9 +38,6 @@ queue()
   showDeathsPerDecade(ndx);
   showTotalDamagePerCountry(ndx);
   show_discipline_selector(ndx);
-  showTotalDamagePerCountryTop(ndx);
-  // showTotalDamagePerCountryBottom(ndx);
-  // showTotalAffectedByType(ndx);
   
   // Render Graphs
   dc.renderAll();
@@ -250,61 +247,7 @@ queue()
   
   }
   
-  // Create Two Pie Charts that show top20 and bottom20 of total_damange ('000 USD) per Country.
-  function showTotalDamagePerCountryTop(ndx) {
-    
-    // Pluck data by country_name
-    var country_nameDimension = ndx.dimension(dc.pluck("country_name"));
-    var total_damageDimension = country_nameDimension.group().reduceSum(dc.pluck("total_damage"));
-    
-    var newArray = []
-    
-    var newArraySeq = function() {
-      for(var i = 0 ; i < 20; i++)
-      //newArray.push(total_damageDimension.top(20)[2]);
-      newArray.push(total_damageDimension.top(20)[i]);
-    }
-    
-    newArraySeq();
-    console.log(newArray);
-    
-    total_damageDimension.top(1)[0]
-    
-    var pieChart = dc.pieChart("#piechart-1")
-    
-    pieChart
-      .height(500)
-      .radius(150)
-      .transitionDuration(1500)
-      .dimension(country_nameDimension)
-      .group(newArray.key)
-      .title(function(d) {
-        return `Total Damage('000) in ${d.key}: ${d.value} USD`
-      })
-      .colors(d3.scale.category20b());
-  
-  }
-  // function showTotalDamagePerCountryBottom(ndx) {
-    
-  //   // Pluck data by country_name
-  //   var country_nameDim = ndx.dimension(dc.pluck("country_name"));
-  //   var total_damageDim = country_nameDim.group().reduceSum(dc.pluck("total_damage"));
-    
-  //   var pieChart = dc.pieChart("#piechart-2")
-    
-  //   pieChart
-  //     .height(500)
-  //     .radius(150)
-  //     .transitionDuration(1500)
-  //     .dimension(country_nameDim)
-  //     .group(total_damageDim)
-  //     .title(function(d) {
-  //       return `Total Damage('000) in ${d.key}: ${d.value} USD`
-  //     })
-  //     .colors(d3.scale.category20b());
-  
-  // }
-  
+
 
 
   // JQuery Functions
