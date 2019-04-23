@@ -30,8 +30,10 @@ queue ()
     showDeathsPerDecade(ndx);
     showTotalDamagePerCountry(ndx);
     show_discipline_selector(ndx);
+    show_country_selector(ndx);
     showTotalDamagePerCountryTop(ndx, data);
     showTotalDamagePerCountryBottom(ndx, data);
+    // show_occurence_num(ndx);
     
     // Render Graphs
     dc.renderAll();
@@ -46,6 +48,7 @@ queue ()
       $("#close-btn").click(function(){
         $("#reset-btn").animate({opacity: "0"}, 250).css("display", "none");
         $("#disciplineSelector").animate({opacity: "0"}, 250).css("display", "none");
+        $("#countrySelector").animate({opacity: "0"}, 250).css("display", "none");
         $(".menu").animate({height: '41px'}, 500);
         $(".toggle-btn").addClass("row_one", 500);
         $("#close-btn").css("display", "none");
@@ -54,25 +57,12 @@ queue ()
       $("#open-btn").click(function(){
         $("#reset-btn").animate({opacity: "100"}, 250).css("display", "block");
         $("#disciplineSelector").animate({opacity: "100"}, 250).css("display", "block");
+        $("#countrySelector").animate({opacity: "110"}, 250).css("display", "block");
         $(".menu").animate({height: '200px'}, 500);
         $(".toggle-btn").removeClass("row_one", 500);
         $("#close-btn").css("display", "block");
         $("#open-btn").css("display", "none");
       }); 
-      
-      // Scroll Functions
-      $(window).scroll({ previousTop: 0 }, function() {
-        var currentTop = $(window).scrollTop();
-        if (currentTop < this.previousTop) {
-          $("footer").css("background-color", "rgba(20,20,20, 0)").css("color", "black").css("border-top", "none").css("box-shadow", "none");
-          $(".menu").css("opacity", "1");
-        } else {
-          $("footer").css("background-color", "#ffffff");
-          $(".menu").css("opacity", "0.7");
-    }
-    this.previousTop = currentTop;
-
-      })
     })
   }
 
@@ -85,6 +75,26 @@ queue ()
         .dimension(dim)
         .group(group);
 }
+
+  // Create a Selector in the Menu to change graphs according to country_name.
+  function show_country_selector(ndx) {
+    var dim = ndx.dimension(dc.pluck('country_name'));
+    var group = dim.group();
+    
+    dc.selectMenu("#countrySelector")
+        .dimension(dim)
+        .group(group);
+}
+
+  // Show the NUmber of Occurrences
+  
+  function show_occurence_num(ndx) {
+    var dim = ndx.dimension(dc.pluck('occurence'));
+    var group = dim.group();
+    
+    dc.numberDisplay("#occurence_id")
+        .group(group);
+  }
 
   // Create a Stacked Bar-Chart of occurence of disaster_type by year.
   function showDisastersPerDecade(ndx){

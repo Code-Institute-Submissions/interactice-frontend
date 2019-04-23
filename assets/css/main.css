@@ -1,19 +1,31 @@
 /* ----- Main Styles Start ----- */
 body {
-    background-color: #fff;
-    font-family: 'Playfair Display', serif;
+    background-color: rgb(57, 59, 121);
+    font-family: 'Rajdhani', sans-serif;
     margin: 0;
     padding: 0;
+    height: auto;
+}
+
+.main {
+    display: block;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+}
+
+@media(max-width: 800px){
+    body{
+        margin-top: 45px;
+    }
 }
 
 /* ----- Header Start ----- */
 .heading {
     text-align: center;
     line-height: 10px;
-    color: #919AA1;
-    background-color: #ffffff;
-    border: solid 2px #919AA1;
-    border-top-color: #fff;
+    color: black;
 }
 .heading p {
     width: 100%;
@@ -43,7 +55,8 @@ body {
     .menu {
         width: 100%;
         left: 0;
-        
+        border-left: none;
+        border-right: none;
     }
 }
 
@@ -66,19 +79,24 @@ body {
     font-weight: 700;
 }
 
-#disciplineSelector select {
+#disciplineSelector select,
+#countrySelector select {
     background-color: #ffffff;
     border: none;
     margin-bottom: 4px;
     z-index: 10;
-    color: #919AA2;
-    border: solid 2px #919AA1;
+    color: #000000;
+    border: solid 1px #919AA1;
     width: 100%;
 }
 #disciplineSelector {
     grid-column: 1 / span 2;
     grid-row: 2;
-    
+}
+
+#countrySelector {
+    grid-column: 1 / span 2;
+    grid-row: 3;
 }
 
 .toggle-btn {
@@ -92,7 +110,7 @@ body {
 
 #close-btn {
     background-color: #fff;
-    border: 2px solid #7A8287;
+    border: 1px solid #7A8287;
     margin-bottom: 4px;
     z-index: 10;
     color: #919AA1;
@@ -105,11 +123,11 @@ body {
 
 #open-btn {
     display: none;
-    background-color: #ffffff;
+    background-color: transparent;
     margin-top: 2.5px;
     border: none;
     z-index: 10;
-    color: #919AA2;
+    color: #000000;
     position: absolute;
     width: 92%
 }
@@ -170,17 +188,18 @@ li {
 /* ----- Chart Description Start ----- */
 .graph-para {
     background-color: #fff;
-    border: solid 2px #919AA1;
+    border: solid 2px #cedb9c;
     margin: 10px 10px;
     padding: 5px 5px;
 }
-.graph-para h2 {
+.graph-para h2, h3 {
     text-align: center;
-    color: #919AA1;
+}
+.graph-para h3 {
+    color: #FA817D;
 }
 .graph-para p {
     text-align: justify;
-    color: #919AA1;
     font-size: 14px;
     padding: 0px 10px;
 }
@@ -192,18 +211,13 @@ li {
 
 /* ----- Footer Start ----- */
 footer {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
+    width: 80%;
     text-align: center;
-    font-size: 11px;
-    padding-top: 12px;
-}
-
-@media (max-width: 728px) {
-    footer {
-        position: relative;
-        padding: 0 15px;
-    }
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 12px;
+    margin-top: 25px;
+    color: white;
 }
 /* ----- Footer End ----- */

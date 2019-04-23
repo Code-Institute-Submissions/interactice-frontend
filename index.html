@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
         <!-- CSS END -->
         
         <!-- SCRIPTS START -->
@@ -23,150 +24,158 @@
         <!-- SCRIPTS END -->
     </head>
     <body>
-        <!-- HEADER START -->
-        <header>
+        <div class="main">
+            <!-- HEADER START -->
+            <header>
+                <div class="container">
+                    <div class="row">
+                    <div class="col-sm-12 col-md-12 heading">
+                        <h1> Natural Disasters </h1>
+                        <p> From 1900 - 2018</p>
+                    </div>
+                </div>
+                </div>
+            </header> 
+            <!-- HEADER END -->
+            
+            <!-- MENU START -->
+            <div class="menu">
+                <!-- RESET DATA BUTTON START -->
+                <button id="reset-btn">
+                <a href="javascript:dc.filterAll(); dc.renderAll();" id="reset-a">Reset All Data</a>
+                </button>
+                <!-- RESET DATA BUTTON END -->
+                
+                <!-- DISASTER TYPE SELECT START -->
+                <div id="disciplineSelector" class="selectors"></div>
+                <div id="countrySelector" class="selectors"> </div>
+                <!-- DISASTER TYPE SELECT END -->
+                
+                <!-- CLOSE BUTTON START -->
+                <div class="toggle-btn">
+                    <button id="close-btn"> Close Menu </button>
+                    <button id="open-btn"> Open Menu </button>
+                </div>
+                <!-- CLOSE BUTTON END -->
+                
+            </div>
+            <!-- MENU END -->
+            
+            <!-- MODAL START -->
+            <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 id="modal-title">Welcome!</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p> In this interactive data dashboard you will be able to look at all disasters since the 1900's and
+                    view: </p>
+                    <ul>
+                        <li> The amount of money Countries have paid in result of the diasters </li>
+                        <li> Total amount of deaths occurred. </li>
+                        <li> Total amount of people affected. </li>
+                        <li> Total Occurences of disasters and types of disasters. </li>
+                    </ul>
+                    <p> 
+                        Use the menu in the top left to reset all data and change the charts 
+                        according to diaster type and please be aware this website is meant to 
+                        be viewed on a laptop screen or larger for each chart to render all graphs
+                        as they were intended to be displayed at.  
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- MODAL END -->
+            
+            <!-- FIRST GRAPH START -->
             <div class="container">
                 <div class="row">
-                <div class="col-sm-4 col-md-4"></div>
-                <div class="col-sm-4 col-md-4 heading">
-                    <h1> Natural Disasters </h1>
-                    <p> From 1900 - 2018</p>
-                </div>
-            </div>
-            </div>
-        </header> 
-        <!-- HEADER END -->
-        
-        <!-- MENU START -->
-        <div class="menu">
-            <!-- RESET DATA BUTTON START -->
-            <button id="reset-btn">
-            <a href="javascript:dc.filterAll(); dc.renderAll();" id="reset-a">Reset All Data</a>
-            </button>
-            <!-- RESET DATA BUTTON END -->
-            
-            <!-- DISASTER TYPE SELECT START -->
-            <div id="disciplineSelector"></div>
-            <!-- DISASTER TYPE SELECT END -->
-            
-            <!-- CLOSE BUTTON START -->
-            <div class="toggle-btn">
-                <button id="close-btn"> Close Menu </button>
-                <button id="open-btn"> Open Menu </button>
-            </div>
-            <!-- CLOSE BUTTON END -->
-            
-        </div>
-        <!-- MENU END -->
-        
-        <!-- MODAL START -->
-        <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h3 id="modal-title">Welcome!</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <p> In this interactive data dashboard you will be able to look at all disasters since the 1900's and
-                view: </p>
-                <ul>
-                    <li> The amount of money Countries have paid in result of the diasters </li>
-                    <li> Total amount of deaths occurred. </li>
-                    <li> Total amount of people affected. </li>
-                    <li> Total Occurences of disasters and types of disasters. </li>
-                </ul>
-                <p> Please use the menu in the top left to reset all data and change the charts according to diaster type. </p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- MODAL END -->
-        
-        <!-- FIRST GRAPH START -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-4">
-                    <div class="graph-para"> 
-                        <h2> Occurences of Natural Disasters Since 1900 - 2019</h2>
-                        <hr width=65%>
-                        <p>
-                            Displayed on the Zoomable Stacked 
-                            Bar-Chart the occurences of natural 
-                            disasters has increased vastly since 
-                            1900. There could be several reasons 
-                            for this - one could be that in 1900's - 
-                            1930's we did not have the technology 
-                            the record all data of diasters. Please 
-                            hover and zoom into the graph to see 
-                            each year more easy and also hover 
-                            over the line to display the amount of 
-                            occurences.
-                        </p>
+                    <div class="col-md-12 col-lg-4">
+                        <div class="graph-para"> 
+                            <h2> Occurences of Natural Disasters Since 1900 - 2019</h2>
+                            <h3 id="occurence_id"></h3>
+                            <hr width=65%>
+                            <p>
+                                Displayed on the Zoomable Stacked 
+                                Bar-Chart the occurences of natural 
+                                disasters has increased vastly since 
+                                1900. There could be several reasons 
+                                for this - one could be that in 1900's - 
+                                1930's we did not have the technology 
+                                the record all data of diasters. Please 
+                                hover and zoom into the graph to see 
+                                each year more easy and also hover 
+                                over the line to display the amount of 
+                                occurences.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-8 overflow-auto">
+                        <div id="stackedchart"></div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-8 overflow-auto">
-                    <div id="stackedchart"></div>
-                </div>
             </div>
-        </div>
-        <!-- FIRST GRAPH END -->
-        
-        <!-- SECOND GRAPH START -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-4">
-                    <div class="graph-para"> 
-                        <h2> Total Deaths Caused By Natural Disasters Since 1900 - 2019</h2>
-                        <hr width=65%>
-                        <p>
-                            This interactive line chart displays 
-                            the total number of deaths caused by
-                            natural disasters. There is a negative 
-                            trend since 1900's. Many would say
-                            this is because we now have methods
-                            of quickly coming to the aid of those
-                            countrys in need.
-                        </p>
+            <!-- FIRST GRAPH END -->
+            
+            <!-- SECOND GRAPH START -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-4">
+                        <div class="graph-para"> 
+                            <h2> Total Deaths Caused By Natural Disasters Since 1900 - 2019</h2>
+                            <hr width=65%>
+                            <p>
+                                This interactive line chart displays 
+                                the total number of deaths caused by
+                                natural disasters. There is a negative 
+                                trend since 1900's. Many would say
+                                this is because we now have methods
+                                of quickly coming to the aid of those
+                                countrys in need.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-8 overflow-auto">
+                        <div id="linegraph"></div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-8 overflow-auto">
-                    <div id="linegraph"></div>
-                </div>
             </div>
-        </div>
-        <!-- SECOND GRAPH END -->
-        
-        <!-- THIRD GRAPH START -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-lg-4">
-                    <div class="graph-para">
-                        <h2> Total Money Spent ('000 USD) Per Country </h2>
-                        <hr width=65%>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum accusamus tempora placeat hic cupiditate mollitia saepe ullam quos incidunt officiis. Odit rem nisi sapiente delectus enim laudantium expedita aspernatur voluptatem, nobis officiis tempore reprehenderit autem, esse amet corporis nostrum itaque adipisci a accusantium maxime eum repellendus! Repellat nobis, facilis laboriosam.</p>
+            <!-- SECOND GRAPH END -->
+            
+            <!-- THIRD GRAPH START -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-4">
+                        <div class="graph-para">
+                            <h2> Total Money Spent ('000 USD) Per Country </h2>
+                            <hr width=65%>
+                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum accusamus tempora placeat hic cupiditate mollitia saepe ullam quos incidunt officiis. Odit rem nisi sapiente delectus enim laudantium expedita aspernatur voluptatem, nobis officiis tempore reprehenderit autem, esse amet corporis nostrum itaque adipisci a accusantium maxime eum repellendus! Repellat nobis, facilis laboriosam.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-8 overflow-auto">
+                        <div id="piechart-1"></div>
+                        <div id="piechart-2"></div>
                     </div>
                 </div>
-                <div class="col-md-12 col-lg-8 overflow-auto">
-                    <div id="piechart-1"></div>
-                    <div id="piechart-2"></div>
-                </div>
             </div>
+            <!-- THIRD GRAPH END -->
+            
         </div>
-        <!-- THIRD GRAPH END -->
-        
         
         <!-- FOOTER START -->
         <footer>
             <p> Built By: Ewan Lockwood | Source: EM-DAT: The Emergency Events Database - Universite catholique de Louvain (UCL) - CRED, D. Guha-Sapir - www.emdat.be, Brussels, Belgium</p>
         </footer>
         <!-- FOOTER END -->
-        
+
         <!-- SCRIPTS START -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
