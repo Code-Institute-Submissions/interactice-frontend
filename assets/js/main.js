@@ -32,7 +32,6 @@ queue ()
     show_discipline_selector(ndx);
     show_country_selector(ndx);
     showTotalDamagePerCountryTop(ndx, data);
-    // showTotalDamagePerCountryBottom(ndx, data);
     show_occurence_num(ndx);
     show_total_death_num(ndx);
     
@@ -43,7 +42,9 @@ queue ()
   // JQuery Functions
   function jqueryFunctions(ndx, data) {
     $(document).ready(function() {
-      // $('#ModalCenter').modal('show');
+      
+      // Display Modal
+      $('#ModalCenter').modal('show');
       
       // Menu Functions
       $("#close-btn").click(function(){
@@ -64,6 +65,7 @@ queue ()
         $("#close-btn").css("display", "block");
         $("#open-btn").css("display", "none");
       }); 
+      
     })
   }
 
@@ -87,7 +89,7 @@ queue ()
         .group(group);
 }
 
-  // Show the Number of Occurrences
+  // Show the number of Occurrences
   function show_occurence_num(ndx) {
     
     var dim = ndx.dimension(dc.pluck("disaster_type"));
@@ -98,6 +100,7 @@ queue ()
       .group(group)
   }
   
+  // Show the number of Total_Deaths
   function show_total_death_num(ndx) {
     var dim = ndx.dimension(dc.pluck("occurrence"));
     var group = dim.group().reduceSum(dc.pluck("total_deaths"));
@@ -195,15 +198,23 @@ queue ()
           .domain([minDecade, 2019]) // 2010 Decade was not showing if used "maxDecade"
           .range([0, 100])
     
+    // If you wanted to render the same chart in multiple places:
+    
+    // var charts = $('.stackedChart');
+    // for (var i = 0; i < charts.length; i++) {
+    //   console.log(charts[i])
+    //     //Render each chart here
+    // }
+    
     // Create  Stacked Chart Variable
     var stackedChart = dc.barChart("#stackedchart")
     
     // baseMixin
     // General Chart Options + marginMixin
+    // Try remove these
     stackedChart
       .width(600)
       .height(437)
-      .margins({top: 10, right: 50, bottom: 30, left: 50});
 
     // Data Options 
     stackedChart
@@ -270,7 +281,6 @@ queue ()
     chart
         .width(600)
         .height(400)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
         .title( d =>  `${d.value} Total Deaths in ${d.key}`);
     
     // Data Options
@@ -348,48 +358,3 @@ queue ()
           .gap(5));
   
 }
-
-  // Create a Pie Chart that shows bottom 10 total_damage ('000 ) per County.
-//   function showTotalDamagePerCountryBottom(ndx, data) {
-    
-//     // Filter data and only rturn data piece whose total_damage > 24000
-//     var filter = data.filter(function(item) {
-//       return item.total_damage;
-//     });
-    
-//     // Sort the filter array
-//     var sort = filter.sort(function(a, b) {
-//       return b.total_damage + a.total_damage;
-//     });
-    
-//     console.log(sort)
-//     // Create new crossfilter 
-//     var ndx_bottom_total_damage = crossfilter(sort);
-    
-//     // Pluck data by country_name
-//     var country_name_dimension = ndx_bottom_total_damage.dimension(dc.pluck("country_name"));
-//     var total_damage_dimension = country_name_dimension.group().reduceSum(dc.pluck("total_damage"));
-    
-//     var pieChart = dc.pieChart("#piechart-2")
-    
-//     pieChart
-//       .height(300)
-//       .radius(100)
-//       .transitionDuration(1500)
-//       .dimension(country_name_dimension)
-//       .group(total_damage_dimension)
-//       .title(function(d) {
-//         return `Total Damage('000) in ${d.key}: ${d.value} USD`
-//       })
-//       .colors(d3.scale.category20b())
-//       .cap(5)
-//       .minAngleForLabel(360)
-//       .legend(
-//         dc.legend()
-//           .x(5)
-//           .y(5)
-//           .itemHeight(15)
-//           .gap(5));
-// }
-
-

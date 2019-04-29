@@ -20,10 +20,13 @@ body {
         margin-top: 45px;
         background-color: white;
     }
-    .main {
-        width: 100%;
-    }
 }
+
+/*@media(max-width: 1200px) {*/
+/*        .main {*/
+/*        width: 100%;*/
+/*    }*/
+/*}*/
 
 /* ----- Header Start ----- */
 .heading {
@@ -229,7 +232,6 @@ footer {
     margin-top: 25px;
     color: white;
 }
-
 @media (max-width: 800px) {
     footer{
         color: rgb(57, 59, 121);
