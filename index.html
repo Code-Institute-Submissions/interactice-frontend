@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <!-- CSS END -->
         
         <!-- SCRIPTS START -->
@@ -97,10 +98,10 @@
             
             <!-- FIRST GRAPH START -->
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12 col-lg-4 offset-lg-1">
+                <div class="row align-items-center">
+                    <div class="col-md-12 col-lg-6  offset-xl-1 ">
                         <div class="graph-para"> 
-                            <h2> Occurences of Natural Disasters Since 1900 - 2019</h2>
+                            <h2> <i class="fas fa-globe-europe"></i> Occurences of Natural Disasters Since 1900 - 2019</h2>
                             <h3 id="occurrence_id"> Total Occurrences</h3>
                             <hr width=65%>
                             <p>
@@ -110,15 +111,15 @@
                                 1900. There could be several reasons 
                                 for this - one could be that in 1900's - 
                                 1930's we did not have the technology 
-                                the record all data of diasters. Please 
+                                the record all data of diasters.<span> Please 
                                 hover and zoom into the graph to see 
                                 each year more easy and also hover 
                                 over the line to display the amount of 
-                                occurences.
+                                occurences. </span>
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-11 offset-md-1 col-lg-5 overflow-auto">
+                    <div class="col-md-11 offset-md-1 offset-lg-0 col-lg-5 overflow-auto">
                         <!--<div class="loader">Loading...</div>-->
                         <div id="stackedchart"></div>
                     </div>
@@ -128,10 +129,10 @@
             
             <!-- SECOND GRAPH START -->
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12 col-lg-4 offset-xl-1">
+                <div class="row align-items-center">
+                    <div class="col-md-12 col-lg-6  offset-xl-1">
                         <div class="graph-para"> 
-                            <h2> Total Deaths Caused By Natural Disasters Since 1900 - 2019</h2>
+                            <h2> <i class="fas fa-globe-asia"></i> Total Deaths Caused By Natural Disasters Since 1900 - 2019</h2>
                             <h3 id="total_deaths_id"> Total Deaths</h3>
                             <hr width=65%>
                             <p>
@@ -141,11 +142,12 @@
                                 trend since 1900's. Many would say
                                 this is because we now have methods
                                 of quickly coming to the aid of those
-                                countrys in need.
+                                countrys in need.<span> Please
+                                hover over the graph to display the total deaths of each decade</span>
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-11 offset-md-1 col-lg-5 overflow-auto">
+                    <div class="col-md-11 offset-md-1 offset-lg-0 col-lg-5 overflow-auto">
                         <div id="linegraph"></div>
                     </div>
                 </div>
@@ -154,10 +156,11 @@
             
             <!-- THIRD GRAPH START -->
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12 col-lg-4 offset-xl-1">
+                <div class="row align-items-center">
+                    <div class="col-md-12 col-lg-6 offset-xl-1">
                         <div class="graph-para">
-                            <h2> Total Money Spent ('000 USD) Per Country </h2>
+                            <h2> <i class="fas fa-globe-americas"></i> Total Money Spent ('000 USD) Per Country </h2>
+                            <h3 id="total_damage_id"> Total Damage $('000)</h3>
                             <hr width=65%>
                             <p> 
                                 This pie-chart shows the top 10 total
@@ -168,7 +171,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="col-md-11 offset-md-1 col-lg-5 overflow-auto">
+                    <div class="col-md-11 offset-md-1 offset-lg-0 col-lg-5 overflow-auto">
                         <div id="piechart-1"></div>
                     </div>
                 </div>

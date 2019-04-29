@@ -34,6 +34,7 @@ queue ()
     showTotalDamagePerCountryTop(ndx, data);
     show_occurence_num(ndx);
     show_total_death_num(ndx);
+    show_total_damage_num(ndx);
     
     // Render Graphs
     dc.renderAll();
@@ -110,6 +111,18 @@ queue ()
       .group(group)
 
   }
+  
+  // Show the number of Total_Damage
+  function show_total_damage_num(ndx) {
+    var dim = ndx.dimension(dc.pluck("occurrence"));
+    var group = dim.group().reduceSum(dc.pluck("total_damage"));
+    
+    dc.numberDisplay("#total_damage_id")
+      .formatNumber(d3.format("   "))
+      .group(group)
+  }
+  
+
 
   // Create a Stacked Bar-Chart of occurence of disaster_type by year.
   function showDisastersPerDecade(ndx){

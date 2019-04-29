@@ -15,7 +15,7 @@ body {
     background-color: #fff;
 }
 
-@media(max-width: 800px){
+@media(max-width: 992px){
     body{
         margin-top: 45px;
         background-color: white;
@@ -31,13 +31,12 @@ body {
 /* ----- Header Start ----- */
 .heading {
     text-align: center;
-    line-height: 10px;
-    color: black;
+    line-height: 8px;
+    color: rgb(57, 59, 121);
 }
 .heading p {
     width: 100%;
     height: 20px;
-    padding: 5px;
 }
 /* ----- Header End ----- */
 
@@ -58,12 +57,11 @@ body {
     grid-template-rows: 25% 25% 25% 10% 10% 5%;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 992px) {
     .menu {
         width: 100%;
         left: 0;
-        border-left: none;
-        border-right: none;
+        border: none;
         background-color: rgb(57, 59, 121);
     }
 
@@ -190,7 +188,6 @@ li {
 #linegraph svg,
 #piechart svg,
 #piechart-1 svg{
-    background-color: white;
     margin: 10px 10px;
     padding: 5px 5px;
 }
@@ -201,19 +198,32 @@ li {
 .graph-para {
     background-color: #fff;
     border: solid 2px #cedb9c;
-    margin: 10px 10px;
     padding: 5px 5px;
 }
 .graph-para h2, h3 {
     text-align: center;
+    color: rgb(57, 59, 121);
 }
 .graph-para h3 {
-    color: #FA817D;
+    color: #cedb9c;
 }
 .graph-para p {
     text-align: justify;
     font-size: 14px;
     padding: 0px 10px;
+}
+.graph-para i {
+    color: rgb(57, 59, 121);
+}
+.graph-para span {
+    color: rgb(57, 59, 121);
+}
+
+@media (max-width: 992px){
+    .graph-para {
+        border: none;
+        padding: 0;
+    }
 }
 /* ----- Chart Description End ----- */
 
@@ -232,7 +242,7 @@ footer {
     margin-top: 25px;
     color: white;
 }
-@media (max-width: 800px) {
+@media (max-width: 992px) {
     footer{
         color: rgb(57, 59, 121);
     }
