@@ -107,6 +107,5 @@ I would now ```$git status``` to check if everything is finished and then look a
 
 ## Credits
 ### Content
-
- 
+All data came from https://emdat.be.
 ### Media
