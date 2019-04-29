@@ -30,6 +30,7 @@ https://ewanlockwood.github.io/interactice-frontend/
 
 ## Overview
 
+This is an Interactive Dashboard that displays the effects of Disasters since 1900's.
 
  
 -----
