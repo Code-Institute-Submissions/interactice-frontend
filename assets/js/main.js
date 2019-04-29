@@ -52,7 +52,7 @@ queue ()
         $("#reset-btn").animate({opacity: "0"}, 250).css("display", "none");
         $("#disciplineSelector").animate({opacity: "0"}, 250).css("display", "none");
         $("#countrySelector").animate({opacity: "0"}, 250).css("display", "none");
-        $(".menu").animate({height: '41px'}, 500);
+        $(".menu").animate({height: '60px'}, 500);
         $(".toggle-btn").addClass("row_one", 500);
         $("#close-btn").css("display", "none");
         $("#open-btn").css("display", "block");
@@ -61,7 +61,7 @@ queue ()
         $("#reset-btn").animate({opacity: "100"}, 250).css("display", "block");
         $("#disciplineSelector").animate({opacity: "100"}, 250).css("display", "block");
         $("#countrySelector").animate({opacity: "110"}, 250).css("display", "block");
-        $(".menu").animate({height: '200px'}, 500);
+        $(".menu").animate({height: '250px'}, 500);
         $(".toggle-btn").removeClass("row_one", 500);
         $("#close-btn").css("display", "block");
         $("#open-btn").css("display", "none");

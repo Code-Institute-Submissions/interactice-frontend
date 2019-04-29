@@ -17,7 +17,7 @@ body {
 
 @media(max-width: 992px){
     body{
-        margin-top: 45px;
+        margin-top: 65px;
         background-color: white;
     }
 }
@@ -45,13 +45,13 @@ body {
 .menu {
     background-color: #ffffff;
     width: 250px;
-    height: 200px;
+    height: 250px;
     position: fixed;
     top: -5px;
     left: 10px;
     padding: 5px;
     z-index: 10;
-    border: solid 2px #919AA1;
+    border: solid 2px rgb(57, 59, 121);
     display: grid;
     grid-template-columns: 82% 18%;
     grid-template-rows: 25% 25% 25% 10% 10% 5%;
@@ -65,7 +65,8 @@ body {
         background-color: rgb(57, 59, 121);
     }
 
-    button#open-btn {
+    button#open-btn,
+    button#close-btn{
         color: white;
     }
 }
@@ -95,8 +96,8 @@ body {
     border: none;
     margin-bottom: 4px;
     z-index: 10;
-    color: #000000;
-    border: solid 1px #919AA1;
+    color: rgb(57, 59, 121);
+    border: solid 1px rgb(57, 59, 121);
     width: 100%;
 }
 #disciplineSelector {
@@ -119,27 +120,30 @@ body {
 }
 
 #close-btn {
-    background-color: #fff;
-    border: 1px solid #7A8287;
-    margin-bottom: 4px;
-    z-index: 10;
-    color: #919AA1;
+    /*background-color: #fff;*/
+    /*border: 1px solid #7A8287;*/
+    /*margin-bottom: 4px;*/
+    /*z-index: 10;*/
+    width: auto;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    color: rgb(57, 59, 121);
     position: absolute;
-
-}
-#close-btn:hover {
-    background-color: #eeeeee
+    font-size: 30px;
 }
 
 #open-btn {
     display: none;
     background-color: transparent;
-    margin-top: 2.5px;
+    margin-top: 5px;
     border: none;
     z-index: 10;
-    color: #000000;
+    color: rgb(57, 59, 121);
     position: absolute;
     width: 92%;
+    font-size: 30px;
 }
 /* ----- Menu End ----- */
 
@@ -223,6 +227,10 @@ li {
     .graph-para {
         border: none;
         padding: 0;
+    }
+    
+    .graph-container {
+        margin-top: 50px;
     }
 }
 /* ----- Chart Description End ----- */
