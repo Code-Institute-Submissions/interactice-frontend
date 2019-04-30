@@ -54,10 +54,10 @@ This is an Interactive Dashboard that displays the effects of Disasters since 19
 ### Development
 
 #### IDE
-
+Cloud9 IDE was the Integrated development enviroment for this website.
 
 #### Version Control
-
+Git Hub was the version control station for this website which was used to manage and store versions of the source code.
 
 -----
 ## Features
