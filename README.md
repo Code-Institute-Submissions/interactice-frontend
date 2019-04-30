@@ -85,6 +85,15 @@ To make the website look better visually.
 
 ## Testing
 
+## Manual Testing
+
+1. Both Modal "Close" Button and "X" Button successfully close the modal.
+
+2. The "Reset all Data" Button successfully resets all data on each charts.
+
+3. Both Drop Down Menu's successfully change all graphs accordingly.
+
+4. Each Chart Interacts with each other successfully.
 -----
 
 ## Deployment
@@ -108,4 +117,6 @@ I would now ```$git status``` to check if everything is finished and then look a
 ## Credits
 ### Content
 All data came from https://emdat.be.
+
+All Icons came from https://fontawesome.com/.
 ### Media
