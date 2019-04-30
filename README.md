@@ -1,8 +1,6 @@
 # Natural Disasters Interactive Database
 
-### Site Address: 
-
-https://ewanlockwood.github.io/interactice-frontend/
+#### Site Address: https://ewanlockwood.github.io/interactice-frontend/
 
 -----
 
