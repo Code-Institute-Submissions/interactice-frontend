@@ -77,10 +77,19 @@ To provide the structure of the webiste.
 ### CSS
 To make the website look better visually.
 
-### Bootstrap
-(https://getbootstrap.com/)
- To use their responsive grid system and also their sass variables where certain variables have an established design to it already.
+### Bootstrap (https://getbootstrap.com/)
+To use their responsive grid system and also their sass variables where certain variables have an established design to it already.
+
+### DC (https://dc-js.github.io/dc.js/)
+To display interactive charts from datasets.
  
+### D3 (https://d3js.org/)
+To render each graph
+
+### Crossfilter (http://crossfilter.github.io/crossfilter/)
+To create an interaction with all graphs in the dataset.
+ 
+
 -----
 
 ## Testing
