@@ -53,20 +53,27 @@ queue ()
         $("#disciplineSelector").animate({opacity: "0"}, 250).css("display", "none");
         $("#countrySelector").animate({opacity: "0"}, 250).css("display", "none");
         $(".menu").animate({height: '60px'}, 500);
+        $(".menu").css("background-color", "rgba(0,0,0,0")
         $(".toggle-btn").addClass("row_one", 500);
         $("#close-btn").css("display", "none");
-        $("#open-btn").css("display", "block");
+        $("#open-btn").css("display", "block").css("color", "rgb(57,59,121)");
       });  
       $("#open-btn").click(function(){
         $("#reset-btn").animate({opacity: "100"}, 250).css("display", "block");
         $("#disciplineSelector").animate({opacity: "100"}, 250).css("display", "block");
         $("#countrySelector").animate({opacity: "110"}, 250).css("display", "block");
-        $(".menu").animate({height: '250px'}, 500);
+        $(".menu").animate({height: '150px'}, 500).css("background-color", "rgba(57,59,121,1)");
         $(".toggle-btn").removeClass("row_one", 500);
         $("#close-btn").css("display", "block");
         $("#open-btn").css("display", "none");
       }); 
       
+      $("#open-btn").hover(
+        function() {
+          $(this).animate({font: "200px"})
+        }), function() {
+          $(this).animate({color: "blue"})
+        }
     })
   }
 
@@ -122,8 +129,6 @@ queue ()
       .group(group)
   }
   
-
-
   // Create a Stacked Bar-Chart of occurence of disaster_type by year.
   function showDisastersPerDecade(ndx){
       
@@ -313,33 +318,6 @@ queue ()
         .yAxisLabel("Total Deaths ('000)")
         .yAxis().ticks(4);
     }
-      
-  // Create a Pie Chart that shows total_damage ('000 ) per County.
-  function showTotalDamagePerCountry(ndx) {
-    
-    // Pluck data by country_name
-    var country_nameDim = ndx.dimension(dc.pluck("country_name"));
-    var total_damageDim = country_nameDim.group().reduceSum(dc.pluck("total_damage"));
-    
-    // Pie Chart Variable
-    var pieChart = dc.pieChart("#piechart")
-    
-    // baseMixin
-    pieChart
-      .height(500)
-      .radius(150)
-      .transitionDuration(1500)
-      .dimension(country_nameDim)
-      .group(total_damageDim)
-      .title(function(d) {
-        return `Total Damage('000) in ${d.key}: ${d.value} USD`
-      });
-    
-    // colorMixin
-    pieChart
-      .colors(d3.scale.category20b());
-  
-  }
   
   // Create a Pie Chart that shows top 10 total_damage ('000 ) per County.
   function showTotalDamagePerCountryTop(ndx, data) {
