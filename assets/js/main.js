@@ -28,7 +28,6 @@ queue ()
     //Graphs 
     showDisastersPerDecade(ndx);
     showDeathsPerDecade(ndx);
-    showTotalDamagePerCountry(ndx);
     show_discipline_selector(ndx);
     show_country_selector(ndx);
     showTotalDamagePerCountryTop(ndx, data);
