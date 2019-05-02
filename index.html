@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -10,17 +10,15 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.min.css" type="text/css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="assets/css/main.css" type="text/css"/>
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <!-- CSS END -->
         
         <!-- SCRIPTS START -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.2.1/echarts.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.8/dc.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
         <!-- SCRIPTS END -->
     </head>
     <body>
@@ -63,7 +61,7 @@
             <!-- MENU END -->
             
             <!-- MODAL START -->
-            <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="Modal" aria-hidden="true">
+            <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalCenter" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -105,7 +103,7 @@
                         <div class="graph-para"> 
                             <h2> <i class="fas fa-globe-europe"></i> Occurences of Natural Disasters Since 1900 - 2019</h2>
                             <h3 id="occurrence_id"> Total Occurrences</h3>
-                            <hr width=65%>
+                            <hr style="width: 65%">
                             <p>
                                 Displayed on the Zoomable Stacked 
                                 Bar-Chart the occurences of natural 
@@ -136,7 +134,7 @@
                         <div class="graph-para"> 
                             <h2> <i class="fas fa-globe-asia"></i> Total Deaths Caused By Natural Disasters Since 1900 - 2019</h2>
                             <h3 id="total_deaths_id"> Total Deaths</h3>
-                            <hr width=65%>
+                            <hr style="width: 65%">
                             <p>
                                 This interactive line chart displays 
                                 the total number of deaths caused by
@@ -163,7 +161,7 @@
                         <div class="graph-para">
                             <h2> <i class="fas fa-globe-americas"></i> Total Money Spent ('000 USD) Per Country </h2>
                             <h3 id="total_damage_id"> Total Damage $('000)</h3>
-                            <hr width=65%>
+                            <hr style="width: 65%">
                             <p> 
                                 This pie-chart shows the top 10 total
                                 money Spent by each country. Overall, 
@@ -190,7 +188,7 @@
 
         <!-- SCRIPTS START -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
-        <script type="text/javascript" src="assets/js/main.js"></script>
+        <script src="assets/js/main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <!-- SCRIPTS END -->

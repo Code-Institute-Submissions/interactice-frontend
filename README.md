@@ -96,8 +96,14 @@ Git Hub was the version control station for this website which was used to manag
 
 -----
 ## Features
+
+
 ### Existing Features
 
+ 1. Single Page Website - This was used to ensure a better user experience.
+ 2. Modal - To introduce the website's intentions and functionality.
+ 2. Charts - To view a barchart, linechart and pie chart.
+ 3. Menu - To catergorise the charts into, type of diaster or country and also to reset all charts.
 
 -----
 
@@ -109,6 +115,12 @@ To provide the structure of the webiste.
 
 ### CSS
 To make the website look better visually.
+
+### Javascript
+To write the functionality of the website and to retieve the data from the dataset.
+
+### Jquery
+To help with DOM manipulation and also to create asychronous requests.
 
 ### Bootstrap (https://getbootstrap.com/)
 To use their responsive grid system and also their sass variables where certain variables have an established design to it already.
@@ -127,6 +139,8 @@ To create an interaction with all graphs in the dataset.
 
 ## Testing
 
+I tested this project manually and also with the use of Jasmine.js.
+
 ## Manual Testing
 
 1. Both Modal "Close" Button and "X" Button successfully close the modal.
@@ -136,11 +150,26 @@ To create an interaction with all graphs in the dataset.
 3. Both Drop Down Menu's successfully change all graphs accordingly.
 
 4. Each Chart Interacts with each other successfully.
+
+I also used Google Developer Tools to simulate a mobile to help me see the responsiveness. I discovered the charts we not rendering proper on small device
+so I introduced a horizontal scroll to help mobile users to view my charts.
+
+There are zero errors in the published console log.
+
+## Jasmine Testing
+
+I understood that d3 did not need to be tested as the developers test it already so my main focus with
+jasmine was to test if the methods function successfully called the fucntions to render the charts.
+
+<img src="assets/img/jstest.png" alt="Jasmine Test Screenshot"/>
+
+
 -----
 
 ## Deployment
 
 The version control and deployment of this project is based on Git Hub. After every session I push the local code within Cloud9 into my GIT HUB repository.
+
 
 This is my procedure: 
 
