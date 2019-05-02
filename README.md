@@ -29,6 +29,7 @@
 ## Overview
 
 This is an Interactive Dashboard that displays the effects of Disasters since 1900's.
+ You can find out the occurences of each disaster type; total deaths caused and money speny by each country
 
  
 -----

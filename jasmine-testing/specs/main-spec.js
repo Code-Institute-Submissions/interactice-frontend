@@ -11,6 +11,7 @@ function(){
             
         expect(jqueryFunctions).toHaveBeenCalled();
     })
+    
     it("should also call show_discipline_selector()", function(){
         let show_discipline_selector = spyOn(window, 'show_discipline_selector')
         methods();
