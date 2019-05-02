@@ -37,6 +37,8 @@ This is an Interactive Data Dashboard that displays the effects of Disasters sin
 
 ## UX
 
+## Strategy Plane
+
 The inspiration for this project came from <a href="https://ourworldindata.org/natural-disasters"> Our World In Data </a> they had a vast amount
 of dashboards but I decided to use the Natural Disasters database from <a href="https://www.emdat.be/"> The International Disaster Database</a>.
 
@@ -44,32 +46,45 @@ This Interactive Data Dashboard was built to display and visualise data for the 
 improve their knowledge on the effects of disasters and intened user of this site was mainly students for educational purposes or
 people genrally interested in this topic.
 
+## Scope Plane
+
+Taking into account that that users will visit my site to look specifically on visualised data I want the main attention
+focusing on the graphs themselves. Therefore, little content as possible is required to suffice the goal.
+
+
+## Structure Plane
+
 Before I started my project I created a mockup using Adobe XD (image below). I understood that this was the foundations of my
 site as other ideas would come to mind when progressing with the project.
 
 <img src="assets/img/MockupPage1.jpg" alt="Mockup Design"/>
-
 <br>
 
-The menu situated top left was initally empty and was planning to add a link to each graph but later on I decided to create a place to
-catergorise the charts.
+This is the overall structure I wanted as the content is minimal with only the chart description and charts availble for the user to look at. Also, I want 
+padding around each peice of content to create more of a spacious effect so the user isnt overwhemled with infomation or content.
+
+## Interaction Design
+
+Apat from the interaction with each chart. The menu situated top left was implement to help catergorise the charts but initally it planned to add a link to each graph on
+the page.
 
 For Example, below you can see when I change the first drop downmenu to a specific type of disater the charts will change respectfully.
 
 <img src="assets/img/MenuFunc.jpg" alt="Menu in initial state"/>
 <img src="assets/img/MenuFunc2.jpg" alt="Menu in initial state"/>
-## Strategy Plane
- 
-
-## Scope Plane
-
-
-## Structure Plane
- 
-## Interaction Design
  
 
 ## Surface Plane
+
+The typogragphy was found on google fonts and I chose the font <a href="https://fonts.google.com/specimen/Rajdhani">Rajdhani</a> as it
+stood out to me the most, it has a nice futuristic effect with soft-rounded edges.
+
+The color scheme I chose for this project is seen below:
+Hexcodes:
+ - #cedb9c
+ - #393b79
+
+<img src="assets/img/color.png" alt="color scheme"/>
 
 ### Development
 
@@ -144,6 +159,6 @@ I would now ```$git status``` to check if everything is finished and then look a
 ## Credits
 ### Content
 All data came from https://emdat.be.
-
 All Icons came from https://fontawesome.com/.
+The main font was found at https://fonts.google.com/specimen/Rajdhani.
 ### Media
