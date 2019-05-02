@@ -28,26 +28,34 @@
 
 ## Overview
 
-This is an Interactive Dashboard that displays the effects of Disasters since 1900's.
- You can find out the occurences of each disaster type; total deaths caused and money speny by each country
+This is an Interactive Data Dashboard that displays the effects of Disasters since 1900's.
+ You can find out the occurences of each disaster type, total deaths caused and money speny by each country.
 
  
 -----
 
 
 ## UX
+
+This Interactive Data Dashboard was built to display and visualise data for the end user to interact with charts to further
+improve their knowledge on the effects of disasters.
+
+Before I started my project I created a mockup using Adobe XD (image below). I understood that this was the foundations of my
+site as other ideas would come to mind when progressing with the project.
+
+<img src="assets/img/MockupPage1.jpg" alt="Mockup Design" style="float: left; margin-right: 10px;" />
+
+
+
+## Strategy Plane
  
 
- 
-### Strategy Plane
- 
-
-### Scope Plane
+## Scope Plane
 
 
- ## Structure Plane
+## Structure Plane
  
- ### Interaction Design
+## Interaction Design
  
 
 ## Surface Plane
