@@ -28,7 +28,7 @@
 ## Overview
 
 This is an Interactive Data Dashboard that displays the effects of Disasters since 1900's.
- You can find out the occurences of each disaster type, total deaths caused and money speny by each country.
+ You can find out the occurences of each disaster type, total deaths caused and money spent by each country.
 
  
 -----
@@ -41,33 +41,33 @@ This is an Interactive Data Dashboard that displays the effects of Disasters sin
 The inspiration for this project came from <a href="https://ourworldindata.org/natural-disasters"> Our World In Data </a> they had a vast amount
 of dashboards but I decided to use the Natural Disasters database from <a href="https://www.emdat.be/"> The International Disaster Database</a>.
 
-This Interactive Data Dashboard was built to display and visualise data for the end user to interact with charts to further
-improve their knowledge on the effects of disasters and intened user of this site was mainly students for educational purposes or
+This Interactive Data Dashboard was built to display and visualise data for the end user to interact with. There are charts to further
+improve their knowledge on the effects of disasters. This site was mainly itended for students, for educational purposes or
 people genrally interested in this topic.
 
 ## Scope Plane
 
-Taking into account that that users will visit my site to look specifically on visualised data I want the main attention
+Taking into account that that users will visit my site to look specifically on visual data I want the main attention
 focusing on the graphs themselves. Therefore, little content as possible is required to suffice the goal.
 
 
 ## Structure Plane
 
-Before I started my project I created a mockup using Adobe XD (image below). I understood that this was the foundations of my
+Before I started my project I created a mockup using Adobe XD (image below). I understood that this was the foundation of my
 site as other ideas would come to mind when progressing with the project.
 
 <img src="assets/img/mockup-page1.jpg" alt="Mockup Design"/>
 <br>
 
-This is the overall structure I wanted as the content is minimal with only the chart description and charts availble for the user to look at. Also, I want 
-padding around each peice of content to create more of a spacious effect so the user isnt overwhemled with infomation or content.
+This is the overall structure that I wanted, as the content is minimal with only the chart description and charts availble for the user to look at. Also, I want 
+padding around each peice of content to create more of a spacious effect so the user isn't overwhemled with infomation or content.
 
 ## Interaction Design
 
-Apat from the interaction with each chart. The menu situated top left was implement to help catergorise the charts but initally it planned to add a link to each graph on
+Apart from the interaction with each chart, the menu situated top left was implemented to help catergorise the charts but initally I had planned to add a link to each graph on
 the page.
 
-For Example, below you can see when I change the first drop downmenu to a specific type of disater the charts will change respectfully.
+For Example, below you can see when I change the first drop downmenu to a specific type of disaster the charts will change accordingly.
 
 <img src="assets/img/menu-func.jpg" alt="Menu in initial state"/>
 <img src="assets/img/menu-func2.jpg" alt="Menu in initial state"/>
@@ -79,7 +79,7 @@ The typogragphy was found on google fonts and I chose the font <a href="https://
 stood out to me the most, it has a nice futuristic effect with soft-rounded edges.
 
 The color scheme I chose for this project is seen below:
-Hexcodes:
+
  - #cedb9c
  - #393b79
 
